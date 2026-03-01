@@ -1,0 +1,87 @@
+name;email;phone;mobile;address;city;state;zip_code;country;notes
+Juan Pérez García;juan.perez@seikou.com;655556699;3102346789;Av 19;Bogotá;COL;06600;Colombia;Cliente frecuente
+María González López;maria.gonzalez@seikou.com;61345678;321987543;Calle 56;Bogotá;Cundinamarca;44100;Colombia;
+Carlos Rodríguez Hernández;carlos.rodriguez@seikou.com;61888774;313876998;Calle 7 # 9 - 8;Soledad;Atlantico;64000;Colombia;Prefiere un solo equipo
+Ana Martínez Sánchez;ana.martinez@seikou.com;32200890;3107689887;Calle Morelos 321;Bogotá;Cundinamarca;72000;Colombia;
+Luis Torres Ramírez;luis.torres@seikou.com;89678901;3175732109;Kra 41E calle 48 09;Cartagena;Municipañ;33000;Colombia;Activado manualmente
+Eddie Luis Rada G;eddieluis37@gmail.com;655556699;3234769453;Calle 1 # 2 - 3;Barranquilla;Soledad;06600;Colombia;Segunda
+DANIELA RIVERA;1234@notiene.com;61345678;3102346789;Av 20;Bogotá;COL;44100;Colombia;Cliente frecuente
+NIKOLE MARIN;1235@notiene.com;61888774;321987543;Calle 57;Bogotá;Cundinamarca;64000;Colombia;
+Daniel Basto;1236@notiene.com;32200890;313876998;Calle 7 # 9 - 9;Soledad;Atlantico;72000;Colombia;Prefiere un solo equipo
+EDGAR REAY MESA;1234567p@notiene.com;89678901;3107689887;Calle Morelos 322;Bogotá;Cundinamarca;33000;Colombia;
+JOHANA CASTELBLANCO;1234568p@notiene.com;655556699;3175732109;Kra 41E calle 48 10;Cartagena;Municipañ;06600;Colombia;Activado manualmente
+CARLOS ARTURO PATIÑO BARRUETO;1234569p@notiene.com;61345678;3234769454;Calle 1 # 2 - 4;Barranquilla;Soledad;44100;Colombia;Segunda
+WINSTON PULIDO;1234570p@notiene.com;61888774;3102346789;Av 21;Bogotá;COL;64000;Colombia;Cliente frecuente
+LORENA CHICO;1234571p@notiene.com;32200890;321987543;Calle 58;Bogotá;Cundinamarca;72000;Colombia;
+ISABELLA SHOOL;1234572p@notiene.com;89678901;313876998;Calle 7 # 9 - 10;Soledad;Atlantico;33000;Colombia;Prefiere un solo equipo
+FELIPE HERNANDEZ;1234573p@notiene.com;655556699;3107689887;Calle Morelos 323;Bogotá;Cundinamarca;06600;Colombia;
+DANIELA ARIZA;1234574p@notiene.com;61345678;3175732109;Kra 41E calle 48 11;Cartagena;Municipañ;44100;Colombia;Activado manualmente
+CAMILA GARCIA;1234575p@notiene.com;61888774;3234769455;Calle 1 # 2 - 5;Barranquilla;Soledad;64000;Colombia;Segunda
+ANA PEÑA;1234576p@notiene.com;32200890;3102346789;Av 22;Bogotá;COL;72000;Colombia;Cliente frecuente
+SEBASTIAN MONTOYA (CAMBIO);1234577p@notiene.com;89678901;321987543;Calle 59;Bogotá;Cundinamarca;33000;Colombia;
+SERGIO ALEJANDRO CASTRO BURGOS;1234578p@notiene.com;655556699;313876998;Calle 7 # 9 - 11;Soledad;Atlantico;06600;Colombia;Prefiere un solo equipo
+PEÑA LOPEZ MARIA FERNANDA;1234579p@notiene.com;61345678;3107689887;Calle Morelos 324;Bogotá;Cundinamarca;44100;Colombia;
+JOHANNA ANDREA URIBE ARDILA ;1234580p@notiene.com;61888774;3175732109;Kra 41E calle 48 12;Cartagena;Municipañ;64000;Colombia;Activado manualmente
+VALENTINA BRAVO ROBLES;1234581p@notiene.com;32200890;3234769456;Calle 1 # 2 - 6;Barranquilla;Soledad;72000;Colombia;Segunda
+ANGELA MARIA DEL PILAR CAMPOS PEREZ;1234582p@notiene.com;89678901;3102346789;Av 23;Bogotá;COL;33000;Colombia;Cliente frecuente
+ANGELA MARIA DEL PILAR CAMPOS PEREZ;1234583p@notiene.com;655556699;321987543;Calle 60;Bogotá;Cundinamarca;06600;Colombia;
+JESSICA ALEXANDRA DIAZ GARZON;1234584p@notiene.com;61345678;313876998;Calle 7 # 9 - 12;Soledad;Atlantico;44100;Colombia;Prefiere un solo equipo
+DIAZ POSADA NESTOR JAIME;1234585p@notiene.com;61888774;3107689887;Calle Morelos 325;Bogotá;Cundinamarca;64000;Colombia;
+HEYDY CALL CENTER;1234586p@notiene.com;32200890;3175732109;Kra 41E calle 48 13;Cartagena;Municipañ;72000;Colombia;Activado manualmente
+OMAR MANUEL ANGARITA GONZALEZ;1234587p@notiene.com;89678901;3234769457;Calle 1 # 2 - 7;Barranquilla;Soledad;33000;Colombia;Segunda
+JUAN JOSE GALEANO;1234588p@notiene.com;655556699;3102346789;Av 24;Bogotá;COL;06600;Colombia;Cliente frecuente
+GALEANO AREVALO LUIS;1234589p@notiene.com;61345678;321987543;Calle 61;Bogotá;Cundinamarca;44100;Colombia;
+MELISSA SHOOL;1234590p@notiene.com;61888774;313876998;Calle 7 # 9 - 13;Soledad;Atlantico;64000;Colombia;Prefiere un solo equipo
+CAROLINA PATIÑO;1234591p@notiene.com;32200890;3107689887;Calle Morelos 326;Bogotá;Cundinamarca;72000;Colombia;
+STEVEN GONZALEZ;1234592p@notiene.com;89678901;3175732109;Kra 41E calle 48 14;Cartagena;Municipañ;33000;Colombia;Activado manualmente
+GRANJAS (EDUARDO);1234593p@notiene.com;655556699;3234769458;Calle 1 # 2 - 8;Barranquilla;Soledad;06600;Colombia;Segunda
+CARLOS RINCON;1234594p@notiene.com;61345678;3102346789;Av 25;Bogotá;COL;44100;Colombia;Cliente frecuente
+CALL CENTER CDA;1234595p@notiene.com;61888774;321987543;Calle 62;Bogotá;Cundinamarca;64000;Colombia;
+WILLIAM PARMENIO CUBILLOS MUÑOZ;1234596p@notiene.com;32200890;313876998;Calle 7 # 9 - 14;Soledad;Atlantico;72000;Colombia;Prefiere un solo equipo
+LEYDI ALFARO;1234597p@notiene.com;89678901;3107689887;Calle Morelos 327;Bogotá;Cundinamarca;33000;Colombia;
+JOHN JAIRO BOHORQUEZ CUENCA ;1234598p@notiene.com;655556699;3175732109;Kra 41E calle 48 15;Cartagena;Municipañ;06600;Colombia;Activado manualmente
+MELISSA SHOOL;1234599p@notiene.com;61345678;3234769459;Calle 1 # 2 - 9;Barranquilla;Soledad;44100;Colombia;Segunda
+DORIS SUSANA HOYOS NAVARRO;1234600p@notiene.com;61888774;3102346789;Av 26;Bogotá;COL;64000;Colombia;Cliente frecuente
+HEIDY CIFUENTES;1234601p@notiene.com;32200890;321987543;Calle 63;Bogotá;Cundinamarca;72000;Colombia;
+FABIAN VARGAS;1234602p@notiene.com;89678901;313876998;Calle 7 # 9 - 15;Soledad;Atlantico;33000;Colombia;Prefiere un solo equipo
+JORGE PALACIOS;1234603p@notiene.com;655556699;3107689887;Calle Morelos 328;Bogotá;Cundinamarca;06600;Colombia;
+VICTOR RODRIGUEZ;1234604p@notiene.com;61345678;3175732109;Kra 41E calle 48 16;Cartagena;Municipañ;44100;Colombia;Activado manualmente
+SALOMON SHOOL;1234605p@notiene.com;61888774;3234769460;Calle 1 # 2 - 10;Barranquilla;Soledad;64000;Colombia;Segunda
+LAURA TOCARA;1234606p@notiene.com;32200890;3102346789;Av 27;Bogotá;COL;72000;Colombia;Cliente frecuente
+CARLOS ACEVEDO;1234607p@notiene.com;89678901;321987543;Calle 64;Bogotá;Cundinamarca;33000;Colombia;
+JORGE OTALORA;1234608p@notiene.com;655556699;313876998;Calle 7 # 9 - 16;Soledad;Atlantico;06600;Colombia;Prefiere un solo equipo
+AREVALO USECHE INGRID TATIANA;1234609p@notiene.com;61345678;3107689887;Calle Morelos 329;Bogotá;Cundinamarca;44100;Colombia;
+CLARA SHOOL;1234610p@notiene.com;61888774;3175732109;Kra 41E calle 48 17;Cartagena;Municipañ;64000;Colombia;Activado manualmente
+GLADYS VARGAS ;1234611p@notiene.com;32200890;3234769461;Calle 1 # 2 - 11;Barranquilla;Soledad;72000;Colombia;Segunda
+OMAR GARCIA;1234612p@notiene.com;89678901;3102346789;Av 28;Bogotá;COL;33000;Colombia;Cliente frecuente
+EDUARDO GRANJAS;1234613p@notiene.com;655556699;321987543;Calle 65;Bogotá;Cundinamarca;06600;Colombia;
+ANDRES CASTILLO;1234614p@notiene.com;61345678;313876998;Calle 7 # 9 - 17;Soledad;Atlantico;44100;Colombia;Prefiere un solo equipo
+JOSE OTERO;1234615p@notiene.com;61888774;3107689887;Calle Morelos 330;Bogotá;Cundinamarca;64000;Colombia;
+RONAL DAVID ROJAS RODRIGUEZ;1234616p@notiene.com;32200890;3175732109;Kra 41E calle 48 18;Cartagena;Municipañ;72000;Colombia;Activado manualmente
+DANA MARIN;1234617p@notiene.com;89678901;3234769462;Calle 1 # 2 - 12;Barranquilla;Soledad;33000;Colombia;Segunda
+LAURA QUIKNATAN;1234618p@notiene.com;655556699;3102346789;Av 29;Bogotá;COL;06600;Colombia;Cliente frecuente
+PEDRONEL SANCHEZ;1234619p@notiene.com;61345678;321987543;Calle 66;Bogotá;Cundinamarca;44100;Colombia;
+ERIKA OYOLA;1234620p@notiene.com;61888774;313876998;Calle 7 # 9 - 18;Soledad;Atlantico;64000;Colombia;Prefiere un solo equipo
+ESTEFANY PULGARIN;1234621p@notiene.com;32200890;3107689887;Calle Morelos 331;Bogotá;Cundinamarca;72000;Colombia;
+HEYBER BARBOSA;1234622p@notiene.com;89678901;3175732109;Kra 41E calle 48 19;Cartagena;Municipañ;33000;Colombia;Activado manualmente
+YOIBER PEREZ;1234623p@notiene.com;655556699;3234769463;Calle 1 # 2 - 13;Barranquilla;Soledad;06600;Colombia;Segunda
+MAURICIO HERNANDEZ;1234624p@notiene.com;61345678;3102346789;Av 30;Bogotá;COL;44100;Colombia;Cliente frecuente
+SCANNER;1234625p@notiene.com;61888774;321987543;Calle 67;Bogotá;Cundinamarca;64000;Colombia;
+DIEGO LUJAN;1234626p@notiene.com;32200890;313876998;Calle 7 # 9 - 19;Soledad;Atlantico;72000;Colombia;Prefiere un solo equipo
+GLORIA PEREIRA;1234627p@notiene.com;89678901;3107689887;Calle Morelos 332;Bogotá;Cundinamarca;33000;Colombia;
+FERNANDA LOZANO;1234628p@notiene.com;655556699;3175732109;Kra 41E calle 48 20;Cartagena;Municipañ;06600;Colombia;Activado manualmente
+YURAMI (GRANJA);1234629p@notiene.com;61345678;3234769464;Calle 1 # 2 - 14;Barranquilla;Soledad;44100;Colombia;Segunda
+ANDERSON MOSQUERA ;1234630p@notiene.com;61888774;3102346789;Av 31;Bogotá;COL;64000;Colombia;Cliente frecuente
+SARA SANCHEZ ALARCON;1234631p@notiene.com;32200890;321987543;Calle 68;Bogotá;Cundinamarca;72000;Colombia;
+JHON ÑUSTES ;1234632p@notiene.com;89678901;313876998;Calle 7 # 9 - 20;Soledad;Atlantico;33000;Colombia;Prefiere un solo equipo
+ELIANA UMAÑA;1234633p@notiene.com;655556699;3107689887;Calle Morelos 333;Bogotá;Cundinamarca;06600;Colombia;
+DANILO ESTEBAN SANIA OVALLE ;1234634p@notiene.com;61345678;3175732109;Kra 41E calle 48 21;Cartagena;Municipañ;44100;Colombia;Activado manualmente
+DANNA MARCELA ECUE CHAGUENDO;1234635p@notiene.com;61888774;3234769465;Calle 1 # 2 - 15;Barranquilla;Soledad;64000;Colombia;Segunda
+JOHAN DANIEL VELANDIA MARIN ;1234636p@notiene.com;32200890;3102346789;Av 32;Bogotá;COL;72000;Colombia;Cliente frecuente
+MARIANA BARRERA;1234637p@notiene.com;89678901;321987543;Calle 69;Bogotá;Cundinamarca;33000;Colombia;
+GARANTIA;1234638p@notiene.com;655556699;313876998;Calle 7 # 9 - 21;Soledad;Atlantico;06600;Colombia;Prefiere un solo equipo
+MICHEL SABOYA;1234639p@notiene.com;61345678;3107689887;Calle Morelos 334;Bogotá;Cundinamarca;44100;Colombia;
+JAIR RADA ;1234640p@notiene.com;61888774;3175732109;Kra 41E calle 48 22;Cartagena;Municipañ;64000;Colombia;Activado manualmente
+MAYRA MARTINEZ ;1234641p@notiene.com;32200890;3234769466;Calle 1 # 2 - 16;Barranquilla;Soledad;72000;Colombia;Segunda
+PEDRO SANCHEZ ;1234642p@notiene.com;89678901;3102346789;Av 33;Bogotá;COL;33000;Colombia;Cliente frecuente
+SOFIA CLAVIJO;1234643p@notiene.com;655556699;321987543;Calle 70;Bogotá;Cundinamarca;06600;Colombia;
