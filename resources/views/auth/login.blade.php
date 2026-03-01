@@ -718,12 +718,12 @@
                             d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z">
                         </path>
                     </svg>
-                    <span class="neon-text">PARKY</span>
+                    <span class="neon-text">EDIFICIO49</span>
                 </div>
 
                 <h1 class="text-5xl md:text-6xl font-black mb-3 neon-text tracking-wider"
                     style="font-family: 'Orbitron', sans-serif;">
-                    PARKY
+                    EDIFICIO49
                 </h1>
                 <p class="text-cyan-300 text-lg font-bold tracking-wide flex items-center justify-center gap-2">
                     <svg class="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
@@ -776,7 +776,7 @@
                         </label>
                         <div class="relative">
                             <input id="email" type="email" name="email" value="{{ old('email') }}" required
-                                autofocus autocomplete="none" placeholder="conductor@parki.com"
+                                autofocus autocomplete="none" placeholder="usuario@empresa.com"
                                 class="w-full px-5 py-4 text-lg text-red placeholder-cyan-400/50 bg-slate-900/70 border-2 border-cyan-500/30 rounded-xl focus:ring-4 focus:ring-cyan-500/50 focus:border-cyan-400 transition-all duration-300 min-h-[56px] @error('email') border-red-500 @enderror">
 
                             {{-- Radar Scanner --}}
@@ -921,7 +921,7 @@
                         Sistema operando 24/7
                     </p>
                     <p class="text-xs text-cyan-500/70" style="font-family: 'Orbitron', monospace;">
-                        © 2024 PARKI. Smart Parking Management System
+                        © 2026 GREL. Smart Management System
                     </p>
                 </div>
             </div>

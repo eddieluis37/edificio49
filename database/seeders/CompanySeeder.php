@@ -10,14 +10,14 @@ class CompanySeeder extends Seeder
     public function run(): void
     {
         Company::create([
-            'name' => 'AdminSeikou',
-            'business_name' => 'Admin Seikou Colombia',
+            'name' => 'AdminEdificio49',
+            'business_name' => 'Admin Edificio 49',
             'rfc' => 'PES240101ABC',
-            'email' => 'info@seikou.com',
+            'email' => 'info@edificio49.com',
             'phone' => '3234769453',
             'mobile' => '3175436606',
-            'website' => 'https://admin-seikou.369connect.com',
-            'address' => 'Cra 19 # 66 - 54',
+            'website' => 'https://edificio49.com',
+            'address' => 'Cra 49 # 15 - 59',
             'city' => 'Ciudad de Bogota',
             'state' => 'Cundinamarca',
             'country' => 'Bogota',

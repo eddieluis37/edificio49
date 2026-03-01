@@ -4,75 +4,81 @@ namespace Database\Seeders;
 
 use App\Models\Customer;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Carbon;
 
-class CustomerSeeder extends Seeder
+class OriginalCustomerSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        $path = database_path('data/Customer.csv'); // ajusta ruta
-        if (!file_exists($path)) {
-            $this->command->error("Archivo no encontrado: $path");
-            return;
+        $customers = [
+            [
+                'name' => 'Juan Pérez García',
+                'email' => 'juan.perez@edificio49.com',
+                'phone' => '655556699',
+                'mobile' => '3102346789',
+                'address' => 'Av 19',
+                'city' => 'Bogotá',
+                'state' => 'COL',
+                'zip_code' => '06600',
+                'country' => 'Colombia',
+                'notes' => 'Cliente frecuente',
+                'is_active' => true,
+            ],
+            [
+                'name' => 'María González López',
+                'email' => 'maria.gonzalez@edificio49.com',
+                'phone' => '61345678',
+                'mobile' => '321987543',
+                'address' => 'Calle 56',
+                'city' => 'Bogotá',
+                'state' => 'Cundinamarca',
+                'zip_code' => '44100',
+                'country' => 'Colombia',
+                'notes' => null,
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Carlos Rodríguez Hernández',
+                'email' => 'carlos.rodriguez@edificio49.com',
+                'phone' => '61888774',
+                'mobile' => '313876998',
+                'address' => 'Calle 7 # 9 - 8',
+                'city' => 'Soledad',
+                'state' => 'Atlantico',
+                'zip_code' => '64000',
+                'country' => 'Colombia',
+                'notes' => 'Prefiere un solo equipo',
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Ana Martínez Sánchez',
+                'email' => 'ana.martinez@edificio49.com',
+                'phone' => '32200890',
+                'mobile' => '3107689887',
+                'address' => 'Calle Morelos 321',
+                'city' => 'Bogotá',
+                'state' => 'Cundinamarca',
+                'zip_code' => '72000',
+                'country' => 'Colombia',
+                'notes' => null,
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Luis Torres Ramírez',
+                'email' => 'luis.torres@edificio49.com',
+                'phone' => '89678901',
+                'mobile' => '3175732109',
+                'address' => 'Kra 41E calle 48 09',
+                'city' => 'Cartagena',
+                'state' => 'Municipañ',
+                'zip_code' => '33000',
+                'country' => 'Colombia',
+                'notes' => 'Activado manualmente',
+                'is_active' => true,
+            ],
+        ];
+
+        foreach ($customers as $customer) {
+            Customer::create($customer);
         }
-
-        // Leer contenido y detectar codificación
-        $content = file_get_contents($path);
-
-        // Eliminar BOM si existe
-        $content = preg_replace('/^\xEF\xBB\xBF/', '', $content);
-
-        // Detectar codificación probable y convertir a UTF-8 si es necesario
-        $encoding = mb_detect_encoding($content, ['UTF-8', 'Windows-1252', 'ISO-8859-1'], true) ?: 'Windows-1252';
-        if ($encoding !== 'UTF-8') {
-            $content = mb_convert_encoding($content, 'UTF-8', $encoding);
-        }
-
-        // Sobreescribir temporalmente o usar stream desde memoria
-        $tmp = tmpfile();
-        fwrite($tmp, $content);
-        fseek($tmp, 0);
-
-        // Leer CSV (usa ';' si tu CSV usa punto y coma)
-        $delimiter = ';'; // cambia a ',' si tu CSV usa comas
-        $header = null;
-        $rowCount = 0;
-
-        while (($data = fgetcsv($tmp, 0, $delimiter)) !== false) {
-            // Saltar filas vacías
-            if (count($data) === 0) continue;
-
-            if (!$header) {
-                // limpiar espacios por si acaso
-                $header = array_map(function($h){ return trim($h); }, $data);
-                continue;
-            }
-
-            // Mapear fila a clave => valor
-            $row = [];
-            foreach ($header as $i => $col) {
-                $row[$col] = isset($data[$i]) ? trim($data[$i]) : null;
-            }
-
-            // Inserta en la tabla customers (ajusta campos según tu tabla)
-            DB::table('customers')->insert([
-                'name' => $row['name'] ?? null,
-                'email' => $row['email'] ?? null,
-                'phone' => $row['phone'] ?? null,
-                'mobile' => $row['mobile'] ?? null,
-                'address' => $row['address'] ?? null,
-                'city' => $row['city'] ?? null,
-                'state' => $row['state'] ?? null,
-                'notes' => $row['notes'] ?? null,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-
-            $rowCount++;
-        }
-
-        fclose($tmp);
-        $this->command->info("Insertadas $rowCount filas desde CSV.");
     }
 }
