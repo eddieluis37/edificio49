@@ -121,5 +121,13 @@ class DatabaseSeeder extends Seeder
         $this->command->info('   • Cash Closures: ' . CashClosure::count());
         $this->command->info('   • Printer Configurations: ' . DB::table('printer_configurations')->count());
         $this->command->info('');
+
+        // seeder para la administracion de edificio
+
+        $this->call([
+            AccountingSeeder::class,
+        ]);
+
+        $this->call(\Database\Seeders\ExampleInvoicesSeeder::class);
     }
 }

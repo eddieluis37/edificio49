@@ -14,6 +14,10 @@ use App\Livewire\SetupWizard;
 use App\Livewire\SystemReset;
 use App\Livewire\UsersManager;
 use App\Livewire\VehicleTypes;
+
+use App\Livewire\InvoicesGrid;
+use App\Livewire\GenerateMonthlyInvoices;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +45,9 @@ require __DIR__ . '/auth.php';
 // desde bootstrap/app.php, por lo que NO es necesario agregarlo aquí
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('/invoices', InvoicesGrid::class)->name('invoices.index');
+    Route::get('/invoices/generate', GenerateMonthlyInvoices::class)->name('invoices.generate');
 
     // ========================================
     // HOMEPAGE - Redirección Inteligente

@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('address')->nullable()->comment('Dirección completa');
             $table->string('city', 100)->nullable()->comment('Ciudad');
             $table->string('state', 100)->nullable()->comment('Estado');
-            $table->string('country', 100)->default('México')->comment('País');
+            $table->string('country', 100)->default('Méx')->comment('País');
             $table->string('postal_code', 10)->nullable()->comment('Código postal');
 
             // Logo e imagen
