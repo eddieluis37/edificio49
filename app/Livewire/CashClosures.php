@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Livewire;
 
-use App\Models\Rental;
+use App\Models\Invoice;
+use App\Models\Payment;
 use App\Models\User;
 use App\Models\CashClosure;
 use Livewire\Component;
@@ -88,22 +89,24 @@ class CashClosures extends Component
     {
         $query = $this->getBaseQuery();
 
-        // Solo rentas cerradas para estadísticas
-        $closedQuery = clone $query;
-        $closedRentals = $closedQuery->where('status', Rental::STATUS_CLOSED)->get();
+        $payments = $this->getBaseQuery()->get();
 
-        // Tickets abiertos (alerta)
-        $openQuery = clone $query;
-        $openTickets = $openQuery->where('status', Rental::STATUS_OPEN)->count();
+        $totalCollected = $payments->sum('amount');
+        $countPayments = $payments->count();
+        $averagePayment = $countPayments > 0 ? $payments->avg('amount') : 0;
+
+        // Facturas vencidas sin pago (morosos)
+        $overdueInvoices = Invoice::where('balance', '>', 0)
+            ->where('due_date', '<', Carbon::now())
+            ->whereBetween('due_date', [Carbon::parse($this->date_from), Carbon::parse($this->date_to)])
+            ->count();
 
         return [
-            'total_income' => $closedRentals->sum('total_amount'),
-            'total_rentals' => $closedRentals->count(),
-            'average_per_rental' => $closedRentals->count() > 0
-                ? $closedRentals->avg('total_amount')
-                : 0,
-            'open_tickets' => $openTickets,
-            'has_open_tickets' => $openTickets > 0,
+            'total_income' => $totalCollected,
+            'total_rentals' => $countPayments,
+            'average_per_rental' => $averagePayment,
+            'open_tickets' => $overdueInvoices,
+            'has_open_tickets' => $overdueInvoices > 0,
         ];
     }
 
@@ -178,16 +181,10 @@ class CashClosures extends Component
      */
     protected function getBaseQuery()
     {
-        $query = Rental::query();
+        $query = Payment::query();
 
-        // Filtrar por usuario
-        if ($this->filter_user_id) {
-            $query->where('user_id', $this->filter_user_id);
-        }
-
-        // Filtrar por rango de fechas
         if ($this->date_from && $this->date_to) {
-            $query->whereBetween('check_out', [
+            $query->whereBetween('date', [
                 Carbon::parse($this->date_from),
                 Carbon::parse($this->date_to)
             ]);
@@ -208,25 +205,20 @@ class CashClosures extends Component
     public function openClosureModal(): void
     {
         // Calcular datos del período
-        $query = $this->getBaseQuery();
+        $payments = $this->getBaseQuery()->get();
 
-        // Rentas cerradas
-        $closedRentals = $query->where('status', Rental::STATUS_CLOSED)->get();
-
-        // Tickets abiertos (alerta)
-        $openTickets = $this->getBaseQuery()
-            ->where('status', Rental::STATUS_OPEN)
-            ->with('space')
+        $overdueInvoices = Invoice::where('balance', '>', 0)
+            ->where('due_date', '<', Carbon::now())
+            ->whereBetween('due_date', [Carbon::parse($this->date_from), Carbon::parse($this->date_to)])
             ->get();
 
-        $this->expected_cash = $closedRentals->sum('total_amount');
-        $this->total_rentals = $closedRentals->count();
-        $this->open_tickets = $openTickets->count();
+        $this->expected_cash = $payments->sum('amount');
+        $this->total_rentals = $payments->count();
+        $this->open_tickets = $overdueInvoices->count();
 
-        // Guardar datos para mostrar en modal
         $this->closure_data = [
-            'closed_rentals' => $closedRentals,
-            'open_tickets' => $openTickets,
+            'payments' => $payments,
+            'overdue_invoices' => $overdueInvoices,
             'expected_cash' => $this->expected_cash,
             'total_rentals' => $this->total_rentals,
         ];

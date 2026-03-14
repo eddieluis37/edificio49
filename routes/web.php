@@ -17,6 +17,7 @@ use App\Livewire\VehicleTypes;
 
 use App\Livewire\InvoicesGrid;
 use App\Livewire\GenerateMonthlyInvoices;
+use App\Livewire\AdminFeeReport;
 
 use Illuminate\Support\Facades\Route;
 
@@ -48,6 +49,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/invoices', InvoicesGrid::class)->name('invoices.index');
     Route::get('/invoices/generate', GenerateMonthlyInvoices::class)->name('invoices.generate');
+    Route::get('/admin-fees/report', AdminFeeReport::class)->name('admin-fees.report');
 
     // ========================================
     // HOMEPAGE - Redirección Inteligente

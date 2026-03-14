@@ -51,22 +51,9 @@
                                     <p class="text-sm text-red-700 dark:text-red-300 mb-3">Se recomienda cerrar todos
                                         los tickets antes de hacer el corte de caja.</p>
 
-                                    @if (isset($closure_data['open_tickets']) && count($closure_data['open_tickets']) > 0)
-                                        <div class="space-y-2">
-                                            <p class="text-xs font-medium text-red-800 dark:text-red-200">Tickets
-                                                abiertos:</p>
-                                            @foreach ($closure_data['open_tickets'] as $ticket)
-                                                <div
-                                                    class="flex items-center gap-2 text-sm text-red-700 dark:text-red-300">
-                                                    <span class="font-mono">{{ $ticket->barcode }}</span>
-                                                    <span>-</span>
-                                                    <span>{{ $ticket->space->code }}</span>
-                                                    <span>-</span>
-                                                    <span>{{ $ticket->formatted_time }}</span>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    @endif
+                                    <div class="text-xs font-medium text-red-800 dark:text-red-200">
+                                        Revisa las facturas vencidas y saldos pendientes antes de cerrar.
+                                    </div>
                                 </div>
                             </div>
                         </div>

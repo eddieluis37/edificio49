@@ -264,6 +264,15 @@
                 <span class="font-medium">Arqueos</span>
             </a>
 
+            <a href="{{ route('admin-fees.report') }}"
+                class="nav-item flex items-center space-x-3 px-4 py-3 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 3h18v18H3V3zm4 4h10v4H7V7zm0 6h10v4H7v-4z" />
+                </svg>
+                <span class="font-medium">Reporte Cuotas</span>
+            </a>
+
 
 
 
