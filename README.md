@@ -50,6 +50,26 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
+## Quick Start - Gestión de Cuotas y Contabilidad
+
+1. Asegura tener configurado `.env` con la base de datos correcta.
+2. Ejecuta migraciones:
+   - `php artisan migrate`
+3. Accede y genera facturas de cuota:
+   - `/invoices/generate`
+4. Registra pagos desde:
+   - `/invoices`
+5. Ver reporte contable:
+   - `/admin-fees/report`
+6. Realiza corte contable de caja:
+   - `/cash/closures`
+
+### Flujo mínimo recomendado
+1. Generar facturas del mes.
+2. Registrar pagos de propietarios.
+3. Ir a Reporte Cuotas y revisar ingresos, pendientes y morosos.
+4. Abrir Corte de Caja y confirmar con efectivo real.
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
