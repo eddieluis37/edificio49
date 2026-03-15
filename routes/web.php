@@ -18,6 +18,8 @@ use App\Livewire\VehicleTypes;
 use App\Livewire\InvoicesGrid;
 use App\Livewire\GenerateMonthlyInvoices;
 use App\Livewire\AdminFeeReport;
+use App\Livewire\GaragesManager;
+use App\Livewire\ApartmentsManager;
 
 use Illuminate\Support\Facades\Route;
 
@@ -77,10 +79,12 @@ Route::middleware('auth')->group(function () {
     });
 
     // ========================================
-    // PARKING MANAGEMENT
+    // PARKING & APARTMENTS 
     // ========================================
     Route::prefix('parking')->name('parking.')->group(function () {
+        Route::get('/apartments', ApartmentsManager::class)->name('apartments');
         Route::get('/spaces', ParkingSpaces::class)->name('spaces');
+        Route::get('/garages', GaragesManager::class)->name('garages');
     });
 
     // ========================================

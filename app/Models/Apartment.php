@@ -9,4 +9,5 @@ class Apartment extends Model {
         return $this->hasOne(Owner::class);
     }
     public function invoices(){ return $this->hasMany(Invoice::class); }
+    public function garages(){ return $this->hasMany(Garage::class); }
 }

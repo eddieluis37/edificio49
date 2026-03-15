@@ -201,6 +201,17 @@
                 <span class="font-medium">Vehículos</span>
             </a>
 
+            <a href="{{ route('parking.apartments') }}"
+                class="nav-item flex items-center space-x-3 px-4 py-3 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1v2H9V7zm0 4h1v2H9v-2zm0 4h1v2H9v-2zm-2-8h1v2H7V7zm0 4h1v2H7v-2zm0 4h1v2H7v-2zm6-8h1v2h-1V7zm0 4h1v2h-1v-2zm0 4h1v2h-1v-2z">
+                    </path>
+                </svg>
+                <span class="font-medium">Apartamentos</span>
+            </a>
+
             <a href="{{ route('parking.spaces') }}"
                 class="nav-item flex items-center space-x-3 px-4 py-3 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -210,6 +221,18 @@
                     </path>
                 </svg>
                 <span class="font-medium">Espacios</span>
+            </a>
+
+            <a href="{{ route('parking.garages') }}"
+                class="nav-item flex items-center space-x-3 px-4 py-3 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12h18M3 6h18M3 18h18"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 8V4h8v4M8 16v-4h8v4"></path>
+                </svg>
+                <span class="font-medium">Garages</span>
             </a>
 
 
