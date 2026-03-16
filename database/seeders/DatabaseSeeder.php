@@ -18,6 +18,7 @@ use Database\Seeders\CustomerSeeder;
 use Database\Seeders\CashClosureSeeder;
 use Database\Seeders\VehicleRateSeeder;
 use Database\Seeders\ParkingSpaceSeeder;
+use Database\Seeders\PropertiesSeeder;
 
 /**
  * ========================================
@@ -130,6 +131,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(\Database\Seeders\ExampleInvoicesSeeder::class);
 
-        $this->call(\Database\Seeders\PropietariosSeeder::class);
+        $this->call(\Database\Seeders\PropertiesSeeder::class);
     }
 }

@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
             ['email' => 'admin@edificio49.com'],
             [
                 'name' => 'Administrador',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('Arojas49.2026*'),
                 'role' => 'admin',
                 'active' => true,
                 'profile_photo' => null,
