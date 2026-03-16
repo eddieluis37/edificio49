@@ -20,6 +20,8 @@ use App\Livewire\GenerateMonthlyInvoices;
 use App\Livewire\AdminFeeReport;
 use App\Livewire\GaragesManager;
 use App\Livewire\ApartmentsManager;
+use App\Livewire\Accounting\ExpensesManager;
+use App\Livewire\Accounting\FinancialLedger;
 
 use Illuminate\Support\Facades\Route;
 
@@ -106,6 +108,14 @@ Route::middleware('auth')->group(function () {
     // ========================================
     Route::prefix('customers')->name('customers.')->group(function () {
         Route::get('/manager', CustomersManager::class)->name('manager');
+    });
+
+    // ========================================
+    // ACCOUNTING (PROPIEDAD HORIZONTAL)
+    // ========================================
+    Route::prefix('accounting')->name('accounting.')->group(function () {
+        Route::get('/expenses', ExpensesManager::class)->name('expenses');
+        Route::get('/ledger', FinancialLedger::class)->name('ledger');
     });
 
     // ========================================

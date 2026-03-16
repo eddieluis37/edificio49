@@ -10,6 +10,7 @@ class ApartmentsManager extends Component
 {
     public $apartments;
     public $baseBudget;
+    public $honorariosDefault;
 
     // Apartment Form Fields
     public $apartment_id;
@@ -38,6 +39,7 @@ class ApartmentsManager extends Component
         
         $setting = \App\Models\AdminFeeSetting::orderBy('year', 'desc')->orderBy('month', 'desc')->first();
         $this->baseBudget = $setting && $setting->base_budget > 0 ? (float) $setting->base_budget : 1120000;
+        $this->honorariosDefault = $setting ? (float)($setting->honorarios_default ?? 0) : 0;
 
         return view('livewire.apartments-manager')->layout('layouts.theme');
     }

@@ -34,10 +34,10 @@
                         <thead class="bg-gray-50 dark:bg-gray-900/50">
                             <tr>
                                 <th scope="col" class="py-4 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 dark:text-white sm:pl-6">Unidad</th>
-                                <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Propietario / Responsable</th>
+                                <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Propietario</th>
                                 <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Garages</th>
                                 <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Coeficiente</th>
-                                <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Cuota Base Estimada</th>
+                                <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Cuota Base</th>
                                 <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Estado</th>
                                 <th scope="col" class="relative py-4 pl-3 pr-4 sm:pr-6 md:pr-0 text-center"><span class="sr-only">Acciones</span></th>
                             </tr>
@@ -86,12 +86,19 @@
                                     $totalCoef = $apt->share_fraction + $apt->garages->sum('share_fraction');
                                     // Make sure it calculates percentage correctly:
                                     $coefMultiplier = $totalCoef > 1 ? ($totalCoef / 100) : $totalCoef;
-                                    $fee = round($baseBudget * $coefMultiplier, 0);
+                                    $baseFee = round($baseBudget * $coefMultiplier, 0);
+                                    $totalFee = $baseFee + $honorariosDefault;
                                 @endphp
                                 <td class="whitespace-nowrap px-3 py-4 text-sm">
                                     <div class="flex flex-col">
-                                        <span class="font-bold text-green-600 dark:text-green-400 text-lg">${{ number_format($fee, 0, ',', '.') }}</span>
-                                        <span class="text-[10px] text-gray-500 uppercase">Sin Honorarios</span>
+                                        <span class="font-bold text-green-600 dark:text-green-400 text-lg" title="Apt {{ $apt->share_fraction }}% + Garajes {{ $apt->garages->sum('share_fraction') }}% = ${{ number_format($baseFee, 0, ',', '.') }} Base">
+                                            ${{ number_format($totalFee, 0, ',', '.') }}
+                                        </span>
+                                        @if($honorariosDefault > 0)
+                                            <span class="text-[10px] text-gray-500 uppercase">+ ${{ number_format($honorariosDefault, 0, ',', '.') }} Adm.</span>
+                                        @else
+                                            <span class="text-[10px] text-gray-500 uppercase">Sin Honorarios</span>
+                                        @endif
                                     </div>
                                 </td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm">
