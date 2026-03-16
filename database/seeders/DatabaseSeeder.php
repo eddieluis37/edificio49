@@ -129,5 +129,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(\Database\Seeders\ExampleInvoicesSeeder::class);
+
+        $this->call(\Database\Seeders\PropietariosSeeder::class);
     }
 }
