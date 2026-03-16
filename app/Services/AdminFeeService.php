@@ -30,10 +30,8 @@ class AdminFeeService
         $date = Carbon::create($year, $month, 1);
         $due = $setting->due_date ? Carbon::parse($setting->due_date) : $date->copy()->endOfMonth();
 
-        $apartments = Apartment::with('owner')->get();
+        $apartments = Apartment::with(['owner', 'garages'])->get();
         Log::info("Apartments to process: " . $apartments->count());
-
-        $service = Service::where('code', 'ADMIN')->first();
 
         $service = Service::where('code', 'ADMIN')->first();
         if (!$service) {
@@ -43,8 +41,25 @@ class AdminFeeService
 
         DB::transaction(function () use ($apartments, $setting, $date, $due, $service) {
             foreach ($apartments as $apt) {
-                // 1) base por area
-                $adminBase = round(($setting->rate_per_sqm ?? 0) * (float)$apt->area, 0);
+                // 1) Coeficiente total = coeficiente del apartamento + suma de coeficientes de sus garages
+                $apartmentCoefficient = (float)($apt->share_fraction ?? 0);
+                $garagesCoefficient = 0.0;
+                
+                if ($apt->garages) {
+                    foreach ($apt->garages as $garage) {
+                        $garagesCoefficient += (float)($garage->share_fraction ?? 0);
+                    }
+                }
+                
+                $totalCoefficient = $apartmentCoefficient + $garagesCoefficient;
+                
+                // Si el coeficiente es mayor que 1, asumo que está en porcentaje (ej. 9.60 en lugar de 0.0960)
+                if ($totalCoefficient > 1) {
+                    $totalCoefficient = $totalCoefficient / 100;
+                }
+
+                $baseBudget = $setting && $setting->base_budget > 0 ? (float) $setting->base_budget : 1120000;
+                $adminBase = round($baseBudget * $totalCoefficient, 0);
 
                 // 2) honorarios (puede venir del setting o override en apartment)
                 $honorarios = $apt->honorarios ?? ($setting->honorarios_default ?? 0);

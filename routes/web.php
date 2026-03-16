@@ -17,6 +17,11 @@ use App\Livewire\VehicleTypes;
 
 use App\Livewire\InvoicesGrid;
 use App\Livewire\GenerateMonthlyInvoices;
+use App\Livewire\AdminFeeReport;
+use App\Livewire\GaragesManager;
+use App\Livewire\ApartmentsManager;
+use App\Livewire\Accounting\ExpensesManager;
+use App\Livewire\Accounting\FinancialLedger;
 
 use Illuminate\Support\Facades\Route;
 
@@ -48,6 +53,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/invoices', InvoicesGrid::class)->name('invoices.index');
     Route::get('/invoices/generate', GenerateMonthlyInvoices::class)->name('invoices.generate');
+    Route::get('/admin-fees/report', AdminFeeReport::class)->name('admin-fees.report');
 
     // ========================================
     // HOMEPAGE - Redirección Inteligente
@@ -75,10 +81,12 @@ Route::middleware('auth')->group(function () {
     });
 
     // ========================================
-    // PARKING MANAGEMENT
+    // PARKING & APARTMENTS 
     // ========================================
     Route::prefix('parking')->name('parking.')->group(function () {
+        Route::get('/apartments', ApartmentsManager::class)->name('apartments');
         Route::get('/spaces', ParkingSpaces::class)->name('spaces');
+        Route::get('/garages', GaragesManager::class)->name('garages');
     });
 
     // ========================================
@@ -100,6 +108,14 @@ Route::middleware('auth')->group(function () {
     // ========================================
     Route::prefix('customers')->name('customers.')->group(function () {
         Route::get('/manager', CustomersManager::class)->name('manager');
+    });
+
+    // ========================================
+    // ACCOUNTING (PROPIEDAD HORIZONTAL)
+    // ========================================
+    Route::prefix('accounting')->name('accounting.')->group(function () {
+        Route::get('/expenses', ExpensesManager::class)->name('expenses');
+        Route::get('/ledger', FinancialLedger::class)->name('ledger');
     });
 
     // ========================================
