@@ -129,6 +129,8 @@ class DatabaseSeeder extends Seeder
             AccountingSeeder::class,
         ]);
 
+        $this->call(LegacyData2025Seeder::class);
+
         $this->call(\Database\Seeders\ExampleInvoicesSeeder::class);
 
         $this->call(\Database\Seeders\PropertiesSeeder::class);
