@@ -202,11 +202,66 @@ class ExpensesManager extends Component
     public function processInstantPayment($id)
     {
         $e = Expense::findOrFail($id);
-        $e->update([
-            'status' => 'paid',
-            'payment_method' => 'Efectivo / Banco',
-            // Opcional: registrar payment_date si existiera campo
-        ]);
-        session()->flash('message', 'Gasto marcado como PAGADO.');
+        
+        $bankAccount = \App\Models\Account::where('code', '111005')->first();
+        $expenseAccount = \App\Models\Account::where('code', '5195')->first(); // Gastos Diversos default
+
+        if (!$bankAccount || !$expenseAccount) {
+            session()->flash('error', 'Cuentas contables no configuradas (111005 o 5195).');
+            return;
+        }
+
+        DB::transaction(function() use ($e, $bankAccount, $expenseAccount) {
+            // Create Journal Entry
+            $je = \App\Models\JournalEntry::create([
+                'number' => 'PAY-' . time(),
+                'date' => now(),
+                'description' => "Pago Proveedor: " . ($e->supplier->name ?? 'Gastos'),
+                'total_debit' => $e->amount,
+                'total_credit' => $e->amount,
+                'status' => 'posted'
+            ]);
+
+            // DEBIT Expense
+            \App\Models\JournalItem::create([
+                'journal_entry_id' => $je->id,
+                'account_id' => $expenseAccount->id,
+                'debit' => $e->amount,
+                'credit' => 0,
+                'description' => $e->description ?: $e->category
+            ]);
+
+            // CREDIT Bank/Cash
+            \App\Models\JournalItem::create([
+                'journal_entry_id' => $je->id,
+                'account_id' => $bankAccount->id,
+                'debit' => 0,
+                'credit' => $e->amount,
+                'description' => "Pago Factura: " . $e->reference
+            ]);
+
+            // Create Treasury Entry
+            \App\Models\TreasuryEntry::create([
+                'type' => 'expense',
+                'date' => now(),
+                'amount' => $e->amount,
+                'description' => "Pago: " . ($e->description ?: $e->category),
+                'account_id' => $bankAccount->id,
+                'counterpart_account_id' => $expenseAccount->id,
+                'supplier_id' => $e->supplier_id,
+                'journal_entry_id' => $je->id,
+                'payment_method' => 'Efectivo / Banco',
+                'reference_doc' => $e->reference,
+            ]);
+
+            $e->update([
+                'status' => 'paid',
+                'payment_method' => 'Efectivo / Banco',
+                'journal_entry_id' => $je->id
+            ]);
+        });
+
+        session()->flash('message', 'Gasto pagado y contabilizado exitosamente.');
     }
+
 }

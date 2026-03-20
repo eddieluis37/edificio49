@@ -116,7 +116,10 @@ Route::middleware('auth')->group(function () {
     Route::prefix('accounting')->name('accounting.')->group(function () {
         Route::get('/expenses', ExpensesManager::class)->name('expenses');
         Route::get('/ledger', FinancialLedger::class)->name('ledger');
+        Route::get('/petty-cash', \App\Livewire\Accounting\Treasury\PettyCashManager::class)->name('petty-cash');
+        Route::get('/income', \App\Livewire\Accounting\Treasury\IncomeManager::class)->name('income');
     });
+
 
     // ========================================
     // RENTALS MANAGEMENT
