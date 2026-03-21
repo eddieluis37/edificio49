@@ -45,6 +45,16 @@ class PettyCashManager extends Component
         $pettyCashAccount = Account::where('code', '110505')->first();
         $balance = $pettyCashAccount ? $pettyCashAccount->balance : 0;
 
+        // Gastos del mes actual (explícito)
+        $startOfMonth = now()->startOfMonth();
+        $endOfMonth = now()->endOfMonth();
+        
+        $monthlyExpenses = TreasuryEntry::where('type', 'petty_cash_out')
+            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->sum('amount');
+
+        $currentMonthName = now()->locale('es')->isoFormat('MMMM YYYY');
+
         $query = TreasuryEntry::with(['counterpart'])
             ->whereIn('type', ['petty_cash_in', 'petty_cash_out'])
             ->when($this->search, function($q) {
@@ -57,6 +67,8 @@ class PettyCashManager extends Component
         return view('livewire.accounting.treasury.petty-cash-manager', [
             'movements' => $query->paginate(10),
             'balance' => $balance,
+            'monthlyExpenses' => $monthlyExpenses,
+            'currentMonthName' => ucfirst($currentMonthName),
             'accounts' => Account::where('level', '>=', 2)->orderBy('code')->get(),
         ])->layout('layouts.theme');
     }

@@ -130,6 +130,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(LegacyData2025Seeder::class);
+        $this->call(LegacyData2026Seeder::class);
 
         $this->call(\Database\Seeders\ExampleInvoicesSeeder::class);
 

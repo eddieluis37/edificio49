@@ -27,8 +27,8 @@
              <div class="w-12 h-12 bg-red-500/20 text-red-600 dark:text-red-400 rounded-2xl flex items-center justify-center mb-4">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/></svg>
             </div>
-            <span class="text-gray-500 dark:text-gray-400 font-medium text-sm">Gastos (Este Mes)</span>
-            <span class="text-2xl font-bold text-red-600 dark:text-red-400 mt-1">$ {{ number_format($movements->where('type','petty_cash_out')->sum('amount') ?? 0, 0, ',', '.') }}</span>
+            <span class="text-gray-500 dark:text-gray-400 font-medium text-sm text-center">Gastos de {{ $currentMonthName }}</span>
+            <span class="text-2xl font-bold text-red-600 dark:text-red-400 mt-1">$ {{ number_format($monthlyExpenses, 0, ',', '.') }}</span>
         </div>
 
         <div class="bg-gradient-to-br from-green-500/10 to-emerald-500/10 dark:from-green-500/20 dark:to-emerald-500/20 p-6 rounded-3xl border border-green-100/50 dark:border-green-700/50 shadow-sm flex flex-col items-center">
