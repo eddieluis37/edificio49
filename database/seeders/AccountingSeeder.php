@@ -31,10 +31,18 @@ class AccountingSeeder extends Seeder {
         Service::create(['code'=>'ADMIN','name'=>'Cuota Administración','shared_by_coefs'=>true]);
 
         // Un AdminFeeSetting ejemplo
+        $year = Carbon::now()->year;
+        $month = Carbon::now()->month;
+        $baseBudget2025 = 1120000;
+        $honorarios2025 = 58000;
+        $actualBudget = ($year >= 2026) ? round($baseBudget2025 * 1.051) : $baseBudget2025;
+        $actualHonorarios = ($year > 2026 || ($year == 2026 && $month >= 5)) ? round($honorarios2025 * 1.051) : $honorarios2025;
+
         AdminFeeSetting::create([
-            'year' => Carbon::now()->year,
-            'month' => Carbon::now()->month,
-            'base_budget' => 2_000_000,
+            'year' => $year,
+            'month' => $month,
+            'base_budget' => $actualBudget,
+            'honorarios_default' => $actualHonorarios,
             'early_discount_enabled' => true,
             'early_discount_days' => 10,
             'early_discount_type' => 'fixed',

@@ -38,8 +38,13 @@ class ApartmentsManager extends Component
         $this->apartments = Apartment::with(['owner', 'garages'])->orderBy('code')->get();
         
         $setting = \App\Models\AdminFeeSetting::orderBy('year', 'desc')->orderBy('month', 'desc')->first();
-        $this->baseBudget = $setting && $setting->base_budget > 0 ? (float) $setting->base_budget : 1120000;
-        $this->honorariosDefault = $setting ? (float)($setting->honorarios_default ?? 0) : 0;
+        $year = now()->year;
+        $defaultBase2025 = 1120000;
+        $defaultBase = ($year >= 2026) ? round($defaultBase2025 * 1.051) : $defaultBase2025;
+        $this->baseBudget = $setting && $setting->base_budget > 0 ? (float) $setting->base_budget : $defaultBase;
+        $defaultHonorarios2025 = 58000;
+        $defaultHonorarios = ($year > 2026 || ($year == 2026 && $month >= 5)) ? round($defaultHonorarios2025 * 1.051) : $defaultHonorarios2025;
+        $this->honorariosDefault = $setting ? (float)($setting->honorarios_default ?? $defaultHonorarios) : (float)$defaultHonorarios;
 
         return view('livewire.apartments-manager')->layout('layouts.theme');
     }

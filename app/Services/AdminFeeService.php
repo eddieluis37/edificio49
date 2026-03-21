@@ -58,11 +58,14 @@ class AdminFeeService
                     $totalCoefficient = $totalCoefficient / 100;
                 }
 
-                $baseBudget = $setting && $setting->base_budget > 0 ? (float) $setting->base_budget : 1120000;
+                $defaultBase2025 = 1120000;
+                $defaultBase = ($year >= 2026) ? round($defaultBase2025 * 1.051) : $defaultBase2025;
+                $baseBudget = $setting && $setting->base_budget > 0 ? (float) $setting->base_budget : $defaultBase;
                 $adminBase = round($baseBudget * $totalCoefficient, 0);
 
-                // 2) honorarios (puede venir del setting o override en apartment)
-                $honorarios = $apt->honorarios ?? ($setting->honorarios_default ?? 0);
+                $defaultHonorarios2025 = 58000;
+                $defaultHonorarios = ($year > 2026 || ($year == 2026 && $month >= 5)) ? round($defaultHonorarios2025 * 1.051) : $defaultHonorarios2025;
+                $honorarios = $apt->honorarios ?? ($setting->honorarios_default ?? $defaultHonorarios);
 
                 $finalAmount = round($adminBase + $honorarios, 2);
 

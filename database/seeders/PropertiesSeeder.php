@@ -23,15 +23,25 @@ class PropertiesSeeder extends Seeder
         Apartment::truncate();
         \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        // 2. Asegurarnos que existe la configuración base del año 2026/2025 para el ejemplo
+        // 2. Asegurarnos que existe la configuración base del año 2025/2026
         $year = Carbon::now()->year;
         $month = Carbon::now()->month;
+
+        $baseBudget = 1120000; // Base 2025
+        $honorarios = 58000;   // Honorarios 2025
+        if ($year >= 2026) {
+            $baseBudget = round($baseBudget * 1.051); // Incremento IPC 5.1% para 2026
+            // Incremento honorarios solo desde mayo de 2026
+            if ($year > 2026 || ($year == 2026 && $month >= 5)) {
+                $honorarios = round($honorarios * 1.051);
+            }
+        }
 
         AdminFeeSetting::updateOrCreate(
             ['year' => $year, 'month' => $month],
             [
-                'base_budget' => 1120000,
-                'honorarios_default' => 58000, // Honorarios mensuales globales 58.000 COP
+                'base_budget' => $baseBudget,
+                'honorarios_default' => $honorarios, 
                 'early_discount_enabled' => true,
                 'due_date' => Carbon::create($year, $month, 1)->endOfMonth()->toDateString()
             ]
