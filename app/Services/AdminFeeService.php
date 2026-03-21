@@ -39,7 +39,7 @@ class AdminFeeService
             return;
         }
 
-        DB::transaction(function () use ($apartments, $setting, $date, $due, $service) {
+        DB::transaction(function () use ($apartments, $setting, $date, $due, $service, $year, $month) {
             foreach ($apartments as $apt) {
                 // 1) Coeficiente total = coeficiente del apartamento + suma de coeficientes de sus garages
                 $apartmentCoefficient = (float)($apt->share_fraction ?? 0);
