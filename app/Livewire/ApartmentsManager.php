@@ -39,6 +39,7 @@ class ApartmentsManager extends Component
         
         $setting = \App\Models\AdminFeeSetting::orderBy('year', 'desc')->orderBy('month', 'desc')->first();
         $year = now()->year;
+        $month = now()->month;
         $defaultBase2025 = 1120000;
         $defaultBase = ($year >= 2026) ? round($defaultBase2025 * 1.051) : $defaultBase2025;
         $this->baseBudget = $setting && $setting->base_budget > 0 ? (float) $setting->base_budget : $defaultBase;

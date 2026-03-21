@@ -6,8 +6,8 @@ use App\Models\Account;
 use App\Models\Expense;
 use App\Models\JournalEntry;
 use App\Models\JournalItem;
-use App\Models\TreasuryEntry;
 use App\Models\Supplier;
+use App\Models\TreasuryEntry;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -22,27 +22,18 @@ class LegacyData2025Seeder extends Seeder
         $recaudosAdm = Account::firstOrCreate(['code' => '4105'], ['name' => 'Recaudos Administracion', 'level' => 2, 'type' => 'income']);
         $gastosGen = Account::firstOrCreate(['code' => '5195'], ['name' => 'Gastos Diversos / Otros', 'level' => 2, 'type' => 'expense']);
 
-        // 2. Poblar Gastos Generales (Modelo Expense) 
+        // 2. Poblar Gastos Generales (Modelo Expense)
         // Estos se vinculan con el módulo de Proveedores y Egresos
         $this->command->info('Seeding Gastos Generales 2025 (Modulo Egresos)...');
-        $gastosData = [
-            ['date' => '2025-03-25', 'description' => 'Papelería, impl aseo', 'amount' => 77500, 'ref' => 'G-250325'],
-            ['date' => '2025-05-21', 'description' => 'fot.rejilla, elem aseo', 'amount' => 30614, 'ref' => 'G-250521'],
-            ['date' => '2025-06-21', 'description' => 'Limp tanques, recarg ext', 'amount' => 419719, 'ref' => 'G-250621'],
-            ['date' => '2025-09-17', 'description' => 'Cuenta de cobro A.Hdez', 'amount' => 534000, 'ref' => 'G-250917'],
-            ['date' => '2025-08-19', 'description' => 'copias llaveselem aseo', 'amount' => 16900, 'ref' => 'G-250819'],
-            ['date' => '2025-10-28', 'description' => 'Element aseo papeler', 'amount' => 45920, 'ref' => 'G-251028'],
-            ['date' => '2025-12-11', 'description' => 'Impresiones, elem aseo', 'amount' => 36640, 'ref' => 'G-251211'],
-            ['date' => '2025-12-22', 'description' => 'Ancheta Navid emplead', 'amount' => 53000, 'ref' => 'G-251222'],
-        ];
+        $gastosData = [];
 
         foreach ($gastosData as $gasto) {
-            DB::transaction(function() use ($gasto, $cajaMenor, $gastosGen) {
+            DB::transaction(function () use ($gasto, $cajaMenor, $gastosGen) {
                 // Crear Asiento Contable
                 $je = JournalEntry::create([
                     'number' => 'LEG-EXP-' . $gasto['ref'],
                     'date' => $gasto['date'],
-                    'description' => "Migración: " . $gasto['description'],
+                    'description' => 'Migración: ' . $gasto['description'],
                     'total_debit' => $gasto['amount'],
                     'total_credit' => $gasto['amount'],
                     'status' => 'posted'
@@ -85,7 +76,7 @@ class LegacyData2025Seeder extends Seeder
 
         // 3. Poblar Movimientos de Caja Menor (JournalEntries + TreasuryEntries)
         $this->command->info('Seeding Detalle Caja Menor 2025 (Modulo Tesorería)...');
-        
+
         $cajaMenorData = [
             // [Fecha, Concepto, Ingreso, Egreso]
             ['2025-01-01', 'Viene dic/2024 (Saldo Inicial)', 361800, 0],
@@ -105,11 +96,14 @@ class LegacyData2025Seeder extends Seeder
         ];
 
         foreach ($cajaMenorData as $data) {
-            $fecha = $data[0]; $concepto = $data[1]; $ingreso = $data[2]; $egreso = $data[3];
+            $fecha = $data[0];
+            $concepto = $data[1];
+            $ingreso = $data[2];
+            $egreso = $data[3];
             $monto = $ingreso > 0 ? $ingreso : $egreso;
             $type = $ingreso > 0 ? 'petty_cash_in' : 'petty_cash_out';
 
-            DB::transaction(function() use ($fecha, $concepto, $monto, $type, $cajaMenor, $bancos, $recaudosAdm, $gastosGen) {
+            DB::transaction(function () use ($fecha, $concepto, $monto, $type, $cajaMenor, $bancos, $recaudosAdm, $gastosGen) {
                 // Determinar contrapartida
                 if ($type === 'petty_cash_in') {
                     // Si es retiro, viene de Bancos, si es Admón viene de Recaudos
@@ -120,9 +114,9 @@ class LegacyData2025Seeder extends Seeder
 
                 // Crear Asiento
                 $je = JournalEntry::create([
-                    'number' => 'LEG-PC-' . time().rand(10,99),
+                    'number' => 'LEG-PC-' . time() . rand(10, 99),
                     'date' => $fecha,
-                    'description' => "Caja Menor: " . $concepto,
+                    'description' => 'Caja Menor: ' . $concepto,
                     'total_debit' => $monto,
                     'total_credit' => $monto,
                     'status' => 'posted'
